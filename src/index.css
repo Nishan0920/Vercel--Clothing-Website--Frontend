@@ -1,0 +1,9 @@
+@import "tailwindcss";
+body{
+    background-color: rgb(171, 171, 239);
+    cursor: default;
+}
+
+.btn{
+    background-color: black;
+}
