@@ -18,8 +18,8 @@ const Product = () => {
       const result = await response.json();
       if(!Array.isArray(result))return
       
-        setItem(result?.[0] || []);
-        setCat(result?.[1] || []);
+        setProductItem(result?.[0] || []);
+        setProductCat(result?.[1] || []);
     } catch (error) {
       console.log("Cant fetch error", error);
     }
