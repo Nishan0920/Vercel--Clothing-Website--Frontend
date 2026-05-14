@@ -95,7 +95,7 @@ const Signin = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-around ">
+          <div className="flex flex-col md:flex-row justify-around  ">
             <div className=" sm:w-auto">
               <button
                 type="submit"
@@ -107,7 +107,7 @@ const Signin = () => {
             <div className=" sm:auto">
               <button
                 type="button"
-                className="w-full sm:w-auto rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800  transition-transform"
+                className="w-full flex   rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800  transition-transform"
                 onClick={handleClose}
               >
                 Go To Home Page
