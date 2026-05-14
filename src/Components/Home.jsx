@@ -9,22 +9,31 @@ const Home = () => {
   const [cat,setCat] = useState([])
   const [items,setItem] = useState([])
   const navigate = useNavigate()
-  const Fetch_Data = async ()=>{
-       try {
-        const response = await fetch("https://vercel-clothing-website-backhend.vercel.app/api/data",{
-        method : "POST",
-        headers : {
-          "Content-Type" : "application/json"
-        }
-       })
-       const result = await response.json()
-       console.log(result)
-        setItem(result[0])
-        setCat(result[1])
-       } catch (error) {
-         console.log("Cant fetch error",error)
-       }
+  const Fetch_Data = async () => {
+  try {
+    const response = await fetch(
+      "https://vercel-clothing-website-backhend.vercel.app/api/data",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const result = await response.json();
+
+  
+
+    if (!Array.isArray(result)) return;
+
+    setItem(result?.[0] || []);
+    setCat(result?.[1] || []);
+  } catch (error) {
+    console.log("Can't fetch error", error);
+   
   }
+};
   const handleProduct = ()=>{
     navigate("/product")
   }
@@ -38,7 +47,7 @@ const Home = () => {
        <div>
         
           {
-            cat.length > 0 ? cat.map((category)=>{
+            cat?.length > 0 ? cat.map((category)=>{
               return( 
               <div key={category._id} className='mt-5'>
                  <div  className='max-w-full text-4xl font-extrabold text-blue-950 tracking-tight text-center'>
@@ -48,7 +57,7 @@ const Home = () => {
                  <hr className='mt-4 text-blue-400'/>
                  <div className='grid grid-cols-1 p-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '>
                      {
-                  items.length>0?items.filter((data)=>data.category===category.category).slice(0,10).map((filterdata=>{
+                  items?.length>0?items.filter((data)=>data.category===category.category).slice(0,10).map((filterdata=>{
                         return(
                         <div key={filterdata._id}>
                           <Card 

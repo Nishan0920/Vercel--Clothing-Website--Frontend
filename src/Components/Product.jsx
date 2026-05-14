@@ -16,9 +16,10 @@ const Product = () => {
         },
       });
       const result = await response.json();
-      console.log(result);
-      setProductItem(result[0]);
-      setProductCat(result[1]);
+      if(!Array.isArray(result))return
+      
+        setItem(result?.[0] || []);
+        setCat(result?.[1] || []);
     } catch (error) {
       console.log("Cant fetch error", error);
     }
@@ -46,7 +47,7 @@ const Product = () => {
         </div>
 
         <div className="mt-10 md:mt-20 px-4 md:px-8">
-          {productcat.length > 0
+          {productcat?.length > 0
             ? productcat.map((category) => {
                 return (
                   <div key={category._id} className="mb-12">
@@ -57,7 +58,7 @@ const Product = () => {
                     <hr className="mt-5 border-blue-500" />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
-                      {productitems.length > 0 ? (
+                      {productitems?.length > 0 ? (
                         productitems
                           .filter(
                             (items) => items.category === category.category &&  items.name.toLowerCase().includes(search.toLocaleLowerCase())
