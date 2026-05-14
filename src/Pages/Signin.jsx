@@ -95,7 +95,7 @@ const Signin = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-around  ">
+          <div className="flex flex-col gap-5 md:flex-row justify-around  ">
             <div className=" sm:w-auto">
               <button
                 type="submit"
