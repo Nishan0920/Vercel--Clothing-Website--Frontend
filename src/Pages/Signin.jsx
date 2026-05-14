@@ -104,13 +104,13 @@ const Signin = () => {
                 SignIn
               </button>
             </div>
-            <div className=" sm:auto">
+            <div className="sm:auto">
               <button
                 type="button"
-                className="w-full   rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800  transition-transform"
                 onClick={handleClose}
+                className="w-full rounded-lg bg-red-600 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-red-700 active:scale-[0.98] transition-transform"
               >
-                Go To Home Page
+                Go TO Home Page
               </button>
             </div>
           </div>
