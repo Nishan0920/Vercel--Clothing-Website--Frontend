@@ -19,7 +19,7 @@ const SignUp = () => {
   const handleONSubmit = async (e) => {
     e.preventDefault();
     try {
-      const reponse = await fetch("http://localhost:5000/api/signup", {
+      const reponse = await fetch("https://vercel-clothing-website-backhend.vercel.app/api/signup", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
