@@ -6,46 +6,47 @@ import Modals from "../Portals/Details";
 const Signin = () => {
   const [existingUser, setExistingUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const [isModal,setIsModal] = useState(true)
+  const [isModal, setIsModal] = useState(true);
   const handleFind = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://vercel-clothing-website-backhend.vercel.app/api/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://vercel-clothing-website-backhend.vercel.app/api/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: existingUser.email,
+            password: existingUser.password,
+          }),
         },
-        body: JSON.stringify({
-          email: existingUser.email,
-          password: existingUser.password,
-        }),
-      });
+      );
       const result = await response.json();
       if (result.success) {
         alert("Login Successfully");
-        localStorage.setItem("email",result.email)
-        localStorage.setItem("authToken",result.authToken)
+        localStorage.setItem("email", result.email);
+        localStorage.setItem("authToken", result.authToken);
         navigate("/");
-        
       } else {
         alert("Invalid Credentials");
       }
     } catch (error) {
-      console.log("Can't fetch the data")
+      console.log("Can't fetch the data");
     }
   };
   const handleChange = (e) => {
     setExistingUser({ ...existingUser, [e.target.name]: e.target.value });
   };
   const handleClose = () => {
-    setIsModal(false)
+    setIsModal(false);
     navigate("/");
   };
 
   return (
     <div>
-      
-       <Modals isOpen={isModal} onClose={handleClose}>
+      <Modals isOpen={isModal} onClose={handleClose}>
         <h2 className="mb-8 text-3xl font-bold text-gray-800 text-center">
           Login
         </h2>
@@ -56,7 +57,7 @@ const Signin = () => {
               htmlFor="email"
               className="mb-3 block text-lg font-semibold text-gray-700"
             >
-              Email address : 
+              Email address :
             </label>
             <input
               type="email"
@@ -106,7 +107,7 @@ const Signin = () => {
             <div className=" sm:auto">
               <button
                 type="button"
-                className="w-full rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800 active:scale-[0.98] transition-transform"
+                className="w-full sm:w-auto rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800 active:scale-[0.98] transition-transform"
                 onClick={handleClose}
               >
                 Go To Home Page
@@ -114,9 +115,8 @@ const Signin = () => {
             </div>
           </div>
         </form>
-        </Modals>
-      </div>
-  
+      </Modals>
+    </div>
   );
 };
 
