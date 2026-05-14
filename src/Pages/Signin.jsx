@@ -107,7 +107,7 @@ const Signin = () => {
             <div className=" sm:auto">
               <button
                 type="button"
-                className="w-full sm:w-auto rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800 active:scale-[0.98] transition-transform"
+                className="w-full sm:w-auto rounded-lg bg-blue-700 px-8 py-4 text-xl font-bold text-white shadow-lg hover:bg-blue-800  transition-transform"
                 onClick={handleClose}
               >
                 Go To Home Page
